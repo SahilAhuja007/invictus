@@ -28,7 +28,7 @@ const UploadPaper: React.FC<UploadPaperProps> = ({ user, isLoggedIn }) => {
 
   useEffect(() => {
     axios
-      .get("http://localhost:8000/papper/userNames")
+      .get("https://invictus-vu1l.onrender.com/papper/userNames")
       .then((response) => {
         if (response.data.success) {
           setUsernames(response.data.usernames);
@@ -141,7 +141,7 @@ const UploadPaper: React.FC<UploadPaperProps> = ({ user, isLoggedIn }) => {
       formDataToSend.append("file", file);
 
       const response = await axios.post(
-        "http://localhost:8000/papper/papper/create",
+        "https://invictus-vu1l.onrender.com/papper/papper/create",
         formDataToSend,
         {
           headers: {

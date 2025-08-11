@@ -10,6 +10,7 @@ import {
   ExternalLink,
 } from "lucide-react";
 import { AtSign } from "lucide-react";
+import { API_BASE_URL } from "../config/api";
 
 interface ProfileProps {
   user: any;
@@ -40,7 +41,7 @@ const Profile: React.FC<ProfileProps> = ({ user, isLoggedIn }) => {
       return;
     }
 
-    const url = `http://localhost:8000/papper/MyPappers?userName=${encodeURIComponent(
+    const url = `${API_BASE_URL}/MyPappers?userName=${encodeURIComponent(
       user.userName
     )}`;
     console.log("Fetching Papers from:", url); // 🔍 Debugging
@@ -74,7 +75,7 @@ const Profile: React.FC<ProfileProps> = ({ user, isLoggedIn }) => {
     }
 
     try {
-      const response = await fetch(`/api/papers/${paperId}`, {
+      const response = await fetch(`${API_BASE_URL}/papper/delete/${paperId}`, {
         method: "DELETE",
         headers: {
           Authorization: `Bearer ${localStorage.getItem("token")}`,
